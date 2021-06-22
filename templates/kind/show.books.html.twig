@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kind {{ kind.label }}{% endblock %}
+
+{% block body %}
+    <h1>Kind {{ kind.label }}</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Release date</th>
+            <th>Author</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in kind.books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.releaseDate }}</td>
+                <td>{{ book.author.name }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('book_index') }}">back to list</a>
+{% endblock %}

@@ -28,13 +28,13 @@ class Book
     private $release_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books")
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="books", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Kind::class, inversedBy="books")
+     * @ORM\ManyToOne(targetEntity=Kind::class, inversedBy="books", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $kind;

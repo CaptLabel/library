@@ -20,14 +20,14 @@ class Kind
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Kind;
-
-    /**
      * @ORM\OneToMany(targetEntity=Book::class, mappedBy="kind")
      */
     private $books;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $label;
 
     public function __construct()
     {
@@ -37,18 +37,6 @@ class Kind
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getKind(): ?string
-    {
-        return $this->Kind;
-    }
-
-    public function setKind(string $Kind): self
-    {
-        $this->Kind = $Kind;
-
-        return $this;
     }
 
     /**
@@ -77,6 +65,18 @@ class Kind
                 $book->setKind(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function setLabel(string $label): self
+    {
+        $this->label = $label;
 
         return $this;
     }

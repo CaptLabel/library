@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Year {{ year }}{% endblock %}
+
+{% block body %}
+    <h1>Year {{ year }}</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Release date</th>
+            <th>Kind</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.releaseDate }}</td>
+                <td>{{ book.kind.label }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('book_index') }}">back to list</a>
+{% endblock %}
